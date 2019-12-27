@@ -1,5 +1,7 @@
-﻿using System;
+﻿using OdeToFood.Web.Models;
+using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -11,7 +13,10 @@ namespace OdeToFood.Web.Controllers
         // GET: Greeting
         public ActionResult Index()
         {
-            return View();
+            var model = new GreetingViewModel();
+            model.Message = ConfigurationManager.AppSettings["message"]; // retrieve message from the app setting in the Web.config
+            return View(model);
+
         }
     }
 }
